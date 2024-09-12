@@ -1,0 +1,51 @@
+Official documentation :  https://docs.djangoproject.com/en/5.1/topics/db/models/
+
+Models are the format for objects in the database. 
+They are defined by the ERD, and strictly technically written out in the models directory.
+
+In this case, the name of the object would be sqlobject.
+
+The files will be in this format : 
+sqlobject.py:
+```
+from django.db import models
+
+class Sqlobject(models.Model):
+
+    nameoffield1 = models.CharField(max_length=25)
+    nameoffield2 = models.CharField(max_length=100)
+```
+
+
+
+The above model has no foreign keys. 
+Here is a many to many model with two foreign keys, one to a user and another object.
+userobject.py:
+```
+from django.db import models
+from django.contrib.auth.models import User
+from .concern import Sqlobject
+
+class Userobject(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    object = models.ForeignKey(Sqlobject, on_delete=models.CASCADE)
+```
+
+"on_delete=models.CASCADE" means that if the object of the foreign key is deleted, delete this object as well.
+If the user or object are deleted, it will also delete the Userobject.
+
+
+
+Here is a model with a one to one field.
+Note : User is a built in model for login and authorization. It can be expanded with another model.
+account.py:
+```
+from django.db import models
+from django.contrib.auth.models import User
+
+class Account(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE,)
+    bio = models.CharField(max_length=100)
+```

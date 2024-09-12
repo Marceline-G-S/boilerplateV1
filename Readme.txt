@@ -7,5 +7,5 @@ In Terminal:
 Make directory
 cd to directory
 place git in directory
-/bin/bash -c django-setup.sh
+./django-setup.sh
 type single word for projectname

@@ -1,0 +1,34 @@
+Fixtures are json files which can be loaded into an SQL database for setup or testing purposes.
+Fixtures get their fields from the testapi/models directory.
+In this case the file would be testapi/models/sqlobject.py
+
+The files will be in this format : 
+
+sqlobject.json
+[
+    {
+        "model": "testapi.sqlobject",
+        "pk": 1,
+        "fields": {
+            "nameoffield1":"value of field 1 for 1st object here.",
+            "nameoffield2":"value of field 2 here. Remove quotes if not string"
+        }
+    },
+    {
+        "model": "testapi.sqlobject",
+        "pk": 2,
+        "fields": {
+            "nameoffield1":"value of field 1 for 2nd object here.",
+            "nameoffield2":"value of field 2 here. Remove quotes if not string"
+        }
+    },
+    {
+        "model": "testapi.sqlobject",
+        "pk": 3,
+        "fields": {
+            "nameoffield1":"value of field 1 for 3rd object here.",
+            "nameoffield2":"value of field 2 here. Remove quotes if not string"
+        }
+    }
+]
+    
